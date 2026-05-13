@@ -4,7 +4,7 @@
 green='\033[0;32m'
 red='\033[0;31m'
 nocolor='\033[0m'
-deps="meson ninja patchelf unzip curl pip flex bison zip glslang glslangValidator"
+deps="meson ninja patchelf unzip curl pip flex bison zip glslang glslangValidator git"
 workdir="$(pwd)/turnip_workdir"
 magiskdir="$workdir/turnip_module"
 ndkver="android-ndk-r29"
@@ -59,6 +59,8 @@ prepare_workdir(){
 	echo "Extracting mesa source ..." $'\n'
 		unzip mesa-main.zip &> /dev/null
 		cd mesa-main
+		wget -O tu-multi-queue.patch https://raw.githubusercontent.com/LFRon/freedreno_turnip-CI/refs/heads/main/0001-tu-Add-2-queues.patch
+		git apply tu-multi-queue.sh
 }
 
 
@@ -120,9 +122,7 @@ EOF
 			-Dvulkan-drivers=freedreno \
 			-Dvulkan-beta=true \
 			-Dfreedreno-kmds=kgsl \
-			-Db_lto=true \
-			-Db_lto_mode=thin \
-			-Dallow-broken-lto=true \
+			-Db_lto=false \
 			-Dstrip=true \
 			-Degl=disabled &> "$workdir/meson_log"
 
@@ -177,7 +177,6 @@ updateJson=https://github.com/ilhan-athn7/freedreno_turnip-CI/releases/download/
 EOF
 
 		cat <<EOF >"system.prop"
-debug.hwui.renderer=skiagl
 ro.hardware.vulkan=turnip
 EOF
 
