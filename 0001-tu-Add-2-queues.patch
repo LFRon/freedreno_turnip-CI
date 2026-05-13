@@ -1,0 +1,34 @@
+From d98fdcd6a5d4acdf7872b0177593af2cbe575a09 Mon Sep 17 00:00:00 2001
+From: LFRon <ronforever@outlook.com>
+Date: Wed, 13 May 2026 21:50:35 +0800
+Subject: [PATCH] tu: Add 2 queues
+
+---
+ src/freedreno/vulkan/tu_device.cc | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/freedreno/vulkan/tu_device.cc b/src/freedreno/vulkan/tu_device.cc
+index 213d958..dcf1842 100644
+--- a/src/freedreno/vulkan/tu_device.cc
++++ b/src/freedreno/vulkan/tu_device.cc
+@@ -1593,7 +1593,7 @@ static const struct vk_pipeline_cache_object_ops *const cache_import_ops[] = {
+ static const VkQueueFamilyProperties tu_gfx_queue_family_properties = {
+    .queueFlags =
+       VK_QUEUE_GRAPHICS_BIT | VK_QUEUE_COMPUTE_BIT | VK_QUEUE_TRANSFER_BIT,
+-   .queueCount = 1,
++   .queueCount = 2,
+    .timestampValidBits = 48,
+    .minImageTransferGranularity = { 1, 1, 1 },
+ };
+@@ -1602,7 +1602,7 @@ static const VkQueueFamilyProperties tu_gfx_sparse_queue_family_properties = {
+    .queueFlags =
+       VK_QUEUE_GRAPHICS_BIT | VK_QUEUE_COMPUTE_BIT | VK_QUEUE_TRANSFER_BIT |
+       VK_QUEUE_SPARSE_BINDING_BIT,
+-   .queueCount = 1,
++   .queueCount = 2,
+    .timestampValidBits = 48,
+    .minImageTransferGranularity = { 1, 1, 1 },
+ };
+-- 
+2.51.0
+
