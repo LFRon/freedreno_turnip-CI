@@ -60,7 +60,7 @@ prepare_workdir(){
 		unzip mesa-main.zip &> /dev/null
 		cd mesa-main
 		wget -O tu-multi-queue.patch https://raw.githubusercontent.com/LFRon/freedreno_turnip-CI/refs/heads/main/0001-tu-Add-2-queues.patch
-		git apply tu-multi-queue.sh
+		git apply tu-multi-queue.patch
 }
 
 
