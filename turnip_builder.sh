@@ -10,7 +10,7 @@ magiskdir="$workdir/turnip_module"
 ndkver="android-ndk-r29"
 ndk="$workdir/$ndkver/toolchains/llvm/prebuilt/linux-x86_64/bin"
 sdkver="34"
-mesasrc="https://gitlab.freedesktop.org/mesa/mesa/-/archive/main/mesa-main.zip"
+mesasrc="https://gitlab.freedesktop.org/Valentine/mesa/-/archive/main/mesa-main.zip"
 
 clear
 
@@ -59,8 +59,6 @@ prepare_workdir(){
 	echo "Extracting mesa source ..." $'\n'
 		unzip mesa-main.zip &> /dev/null
 		cd mesa-main
-		wget -O tu-multi-queue.patch https://raw.githubusercontent.com/LFRon/freedreno_turnip-CI/refs/heads/main/0001-tu-Add-2-queues.patch
-		patch -p1 < tu-multi-queue.patch
 }
 
 
