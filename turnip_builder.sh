@@ -10,7 +10,7 @@ magiskdir="$workdir/turnip_module"
 ndkver="android-ndk-r29"
 ndk="$workdir/$ndkver/toolchains/llvm/prebuilt/linux-x86_64/bin"
 sdkver="34"
-mesasrc="https://gitlab.freedesktop.org/Valentine/mesa/-/archive/main/mesa-main.zip"
+mesasrc="https://gitlab.freedesktop.org/Valentine/mesa/-/archive/tu-multi-q/mesa-tu-multi-q.zip"
 
 clear
 
@@ -58,6 +58,7 @@ prepare_workdir(){
 		curl "$mesasrc" --output mesa-main.zip &> /dev/null
 	echo "Extracting mesa source ..." $'\n'
 		unzip mesa-main.zip &> /dev/null
+		mv mesa-tu-multi-q mesa-main
 		cd mesa-main
 }
 
